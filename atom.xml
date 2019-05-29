@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Ruyu&#39;s Blog</title>
+  
+  <subtitle>Helloooooooooooo!</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://ruyuwei.github.io/"/>
+  <updated>2019-03-31T09:01:02.512Z</updated>
+  <id>https://ruyuwei.github.io/</id>
+  
+  <author>
+    <name>魏不饿</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode1 -- Roman to Integer</title>
+    <link href="https://ruyuwei.github.io/2019/03/27/LeetCode-RomanToInteger/"/>
+    <id>https://ruyuwei.github.io/2019/03/27/LeetCode-RomanToInteger/</id>
+    <published>2019-03-27T06:32:25.000Z</published>
+    <updated>2019-03-31T09:01:02.512Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a><p>Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.</p><p>Symbol       Value<br>I             1<br>V             5<br>X             10<br>L             50<br>C             100<br>D             500<br>M             1000</p><p>For example, two is written as II in Roman numeral, just two one’s added together. Twelve is written as, XII, which is simply X + II. The number twenty seven is written as XXVII, which is XX + V + II.</p><p>Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:</p><pre><code>I can be placed before V (5) and X (10) to make 4 and 9. X can be placed before L (50) and C (100) to make 40 and 90. C can be placed before D (500) and M (1000) to make 400 and 900.</code></pre><p>Given a roman numeral, convert it to an integer. Input is guaranteed to be within the range from 1 to 3999.</p><p>Example 1:</p><p>Input: “III”<br>Output: 3</p><p>Example 2:</p><p>Input: “IV”<br>Output: 4</p><p>Example 3:</p><p>Input: “IX”<br>Output: 9</p><p>Example 4:</p><p>Input: “LVIII”<br>Output: 58<br>Explanation: L = 50, V= 5, III = 3.</p><p>Example 5:</p><p>Input: “MCMXCIV”<br>Output: 1994<br>Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.</p><p>class Solution {<br>    public int romanToInt(String s) {<br>               Map&lt;Character, Integer&gt; map = new HashMap&lt;&gt;();<br>        map.put(‘I’, 1);<br>        map.put(‘V’, 5);<br>        map.put(‘X’, 10);<br>        map.put(‘L’, 50);<br>        map.put(‘C’, 100);<br>        map.put(‘D’, 500);<br>        map.put(‘M’, 1000);</p><pre><code>    int len = s.length();    int result = map.get(s.charAt(len - 1));    for (int i = len - 2; i &gt;= 0; i --) {        if (map.get(s.charAt(i)) &gt;= map.get(s.charAt(i + 1))) {            result += map.get(s.charAt(i));        } else {            result -= map.get(s.charAt(i));        }    }    return result;}</code></pre><p>}</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.&lt;/p&gt;
+&lt;p&gt;Symbol       Value&lt;br&gt;I      
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>second blog</title>
+    <link href="https://ruyuwei.github.io/2019/03/22/second-blog/"/>
+    <id>https://ruyuwei.github.io/2019/03/22/second-blog/</id>
+    <published>2019-03-22T09:11:15.000Z</published>
+    <updated>2019-03-22T09:11:15.938Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>third blog</title>
+    <link href="https://ruyuwei.github.io/2019/03/22/third/"/>
+    <id>https://ruyuwei.github.io/2019/03/22/third/</id>
+    <published>2019-03-22T09:11:15.000Z</published>
+    <updated>2019-03-31T08:59:17.181Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Kubernetes OverView</title>
+    <link href="https://ruyuwei.github.io/2019/03/22/Kubernetes/"/>
+    <id>https://ruyuwei.github.io/2019/03/22/Kubernetes/</id>
+    <published>2019-03-22T09:11:00.000Z</published>
+    <updated>2019-03-31T08:57:45.714Z</updated>
+    
+    <content type="html"><![CDATA[<p>在没有虚拟化技术的时候，部署一个应用，<br>1 购买硬件主机<br>2 安装操作系统<br>3 配置环境<br>4 部署应用</p><a id="more"></a><p>缺点：<br>1 部署应用花销和时间成本都非常大<br>2 容易造成资源的浪费，一个应用使用不了一个服务器的资源<br>3 迁移应用的时候，需要重复一遍部署行为</p><p>虚拟机技术出现之后<br>虚拟化技术是在本地的操作系统的基础上加了一层hypervisor层，hypervisor是一种运行在物理服务器和操作系统之间的中间软件层，可以虚拟化硬件资源，比如CPU,硬盘,内存资源等.然后我们可以基于通过虚拟化出来的资源 安装操作系统，这也就是所谓的虚拟机。<br>通过hypervisor层，我们可以创建不同的虚拟机， 并且可以限定每个虚拟机的物理资源，每个虚拟机都是分离的，独立的。例如<br>A–&gt;2个CPU,8G内存，100G磁盘<br>B–&gt;4个CPU,16G内存，300G磁盘<br>这样就可以实现物理资源利用率的最大化<br>优点：<br>资源池：一个物理机的资源分配到了不同的虚拟机<br>容易扩展：增加物理机或者虚拟机即可，因为虚拟机是可以复制的<br>容易云化？<br>缺点：<br>但是每个虚拟机都有一个操作系统，增加了资源的浪费，虚拟机越多，资源浪费的就越多。</p><p>容器出现的场景契机：<br>1 不同的应用程序可能会有不同的应用环境，.net 开发的网站和php开发的网站依赖的软件就不一样，如果把他们依赖的软件都安装在一个服务器上就需要调试很久，会出现一些冲突，比如访问端口的冲突。通常来讲我们可以通过在服务器上创建不同的虚拟机，然后在不同的虚拟机中安装不同的应用来实现，但是虚拟机的开销比较高。—容器 （容器可以实现隔离应用环境的功能，而且开销小）<br>2 开发者开发的时候用的是ubuntu, 运维管理用的是centos, 运维把软件从开发环境中转移到生产环境中的时候就会遇到一个ubuntu转centos的问题，比如，有些数据库只有ubuntu支持，而centos并不支持。—容器（容器可以把软件以及它的开发环境直接封装转移给运维，而且部署更快）</p><p>从这个两个例子 可以大致看出容器是怎么回事<br>1 对软件及其依赖环境的标准化打包<br>2 实现隔离<br>3 共享一个OS Kernel<br>TBD</p><p>虚拟机和容器的区别<br>虚拟机—&gt;每个虚拟机都包括应用程序，必要的二进制文件以及必要的客户操作系统，实现的是硬件层面实现虚拟化<br>容器化—&gt;操作系统层面上实现虚拟化，直接复用本地主机的操作系统，因此更加轻量级。<br>一台宿主机能容纳的容器比虚拟机多得多，一个虚拟机可能会占用20G。而一个运行了相同应用程序的容器可能只占用200MB</p><p>K8s是一种开源的，基于容器的，分布式管理系统，可以实现自动化部署，伸缩和操作应用程序容器。<br>对于大多数用户来说，他们希望k8s给我带来的体验是一定的，现在我有了应用的容器镜像，请帮我在一个给定的集群上把这个应用运行起来，更进一步说，我希望k8s能提供我路由网关，水平扩展，监控，备份，灾难恢复等一系列运维能力。<br>K8S 能在实体机或者虚拟集群上调度和运行程序容器，从以主机为中心的架构跃至以容器为中心的架构。</p><p>集群主要包括两个部分，<br>一个Master节点<br>一群Node节点<br>Master节点主要负责管理和控制，Node作为集群中的工作节点，运行真正的应用程序。</p><p>Master节点包括API Server, scheduler, controller manager, etcd,<br>API Servier是整个系统的对外接口，供客户和其他组件调用<br>Scheduler负责对集群内部的资源进行调度<br>Controller Manager负责管理控制器</p><p>Node节点结构</p><p>POD 最基本的操作单元 分配容器时 不是分配到Node上，而是被分配到POD上<br>Service可以看做是一组提供相同服务的pod的对外访问接口，POD随时可以在一个节点上停止，在另一个节点上以一个新的IP启动一个新的POD,因此不能以确定的IP提供服务，客户端需要访问的SERVICE对象，每个Service对应一个集群的内部有效虚拟IP，负载均衡。<br>ReplicationController确保在任意时刻都能有指定数量的容器运行及启动，假如内核出现错误，一个容器崩溃，rc会负责启动一个复制的pod，直到原来的pod重新启动运行，rc杀掉副本。实现高可用性。<br>Secrect::认证，秘钥，敏感信息，使用secrect对象可以避免明文写在配置文件中。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在没有虚拟化技术的时候，部署一个应用，&lt;br&gt;1 购买硬件主机&lt;br&gt;2 安装操作系统&lt;br&gt;3 配置环境&lt;br&gt;4 部署应用&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://ruyuwei.github.io/2019/03/22/hello-world/"/>
+    <id>https://ruyuwei.github.io/2019/03/22/hello-world/</id>
+    <published>2019-03-22T07:32:02.202Z</published>
+    <updated>2019-03-22T07:32:02.203Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
